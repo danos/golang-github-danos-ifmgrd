@@ -1,0 +1,13 @@
+[Unit]
+Description=Interface Management daemon
+Requires=ifmgrd.service
+After=rl-system.service
+
+[Service]
+Type=oneshot
+SyslogIdentifier=ifmgrctl-hook
+ExecStart=/usr/sbin/ifmgrctl-add-hook create
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

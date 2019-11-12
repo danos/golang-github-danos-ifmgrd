@@ -1,0 +1,48 @@
+Source: golang-github-danos-ifmgrd
+Section: admin
+Maintainer: Vyatta Package Maintainers <DL-vyatta-help@att.com>
+Build-Depends:
+ debhelper (>= 9),
+ dh-golang (>= 1.18),
+ dh-systemd,
+ dh-vci,
+ dh-yang,
+ golang (>= 1.10),
+ golang-github-danos-configd-client-dev,
+ golang-github-danos-configd-rpc-dev,
+ golang-github-danos-config-dev,
+ golang-github-danos-mgmterror-dev,
+ golang-github-danos-utils-audit-dev,
+ golang-github-danos-utils-exec-dev,
+ golang-github-danos-utils-os-group-dev,
+ golang-github-danos-vci-dev,
+ golang-github-danos-yang-dev,
+ libaudit-dev
+Standards-Version: 3.9.6
+
+Package: ifmgrd
+Architecture: any
+Priority: extra
+Depends:
+ lu,
+ vyatta-ifmgr-v1-yang,
+ vyatta-op-qa-notify-v1-yang,
+ ${misc:Depends},
+ ${shlibs:Depends}
+Built-Using: ${misc:Built-Using}
+Description: Interface Manager daemon
+ Interface Manager daemon built using the commit library to apply config
+
+Package: vyatta-ifmgr-v1-yang
+Architecture: all
+Section: admin
+Priority: optional
+Description: Interface Manager yang definitions
+ The YANG module for vyatta-ifmgr-v1
+
+Package: vyatta-op-qa-notify-v1-yang
+Architecture: all
+Section: admin
+Priority: optional
+Description: Interface Manager operational yang
+ Interface Manager operational command definitions

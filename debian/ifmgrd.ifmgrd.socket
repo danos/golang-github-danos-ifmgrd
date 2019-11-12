@@ -1,0 +1,11 @@
+[Unit]
+Description=ifmgrd socket
+
+[Socket]
+ListenStream=/run/ifmgrd/main.sock
+SocketUser=configd
+SocketGroup=vyattacfg
+SocketMode=770
+
+[Install]
+WantedBy=sockets.target

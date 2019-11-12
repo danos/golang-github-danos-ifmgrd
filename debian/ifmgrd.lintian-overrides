@@ -1,0 +1,7 @@
+ifmgrd: unstripped-binary-or-object
+ifmgrd: hardening-no-relro
+ifmgrd: hardening-no-fortify-functions
+ifmgrd: binary-without-manpage usr/bin/ifmgrctl
+ifmgrd: binary-without-manpage usr/sbin/ifmgrctl-add-hook
+ifmgrd: binary-without-manpage usr/sbin/ifmgrd
+ifmgrd: binary-without-manpage usr/bin/qa-notify

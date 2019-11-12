@@ -1,0 +1,12 @@
+[Unit]
+Description=Interface Management daemon
+Requires=configd.service
+
+[Service]
+Restart=always
+PrivateTmp=yes
+SyslogIdentifier=ifmgrd
+ExecStart=/opt/vyatta/sbin/lu -user configd /usr/sbin/ifmgrd -configdsocket=/run/vyatta/configd/main.sock
+
+[Install]
+WantedBy=multi-user.target
