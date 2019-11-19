@@ -1,11 +1,11 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 
 Files: *
-Copyright: 2015-2017, Brocade Communications Systems, Inc.
-           2017-2019, AT&T Intellectual Property.
+Copyright: 2017-2019, AT&T Intellectual Property.
+           2015-2017, Brocade Communications Systems, Inc.
 License: GPL-2.0
 
-Files: yang/vyatta-ifmgr-v1.yang yang/vyatta-op-qa-notify-v1.yang
+Files: yang/*
 Copyright: 2018-2019, AT&T Intellectual Property.
 License: BSD-3-Clause
 
