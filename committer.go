@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2019, AT&T Intellectual Property.
+// Copyright (c) 2017-2020, AT&T Intellectual Property.
 // All rights reserved.
 // Copyright (c) 2015,2017 by Brocade Communications Systems, Inc.
 // All rights reserved.
@@ -54,6 +54,9 @@ func (c *Committer) LogAudit(_ string) {
 }
 func (c *Committer) Debug() bool {
 	return c.debug
+}
+func (c *Committer) MustDebugThreshold() int {
+	return 0
 }
 func (c *Committer) Sid() string {
 	return c.sid
