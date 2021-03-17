@@ -1,4 +1,4 @@
-// Copyright (c) 2019, AT&T Intellectual Property.
+// Copyright (c) 2019,2021 AT&T Intellectual Property.
 // All rights reserved.
 //
 // Copyright (c) 2015-2017 by Brocade Communications Systems, Inc.
@@ -24,6 +24,24 @@ import (
 	"github.com/danos/utils/os/group"
 )
 
+type LoginPidError struct {
+	pid int32
+}
+
+func (e *LoginPidError) Error() string {
+	return fmt.Sprintf("Login User Id is not set for PID %d", e.pid)
+}
+
+func newLoginPidError(pid int32) error {
+	return &LoginPidError{pid: pid}
+}
+
+func IsLoginPidError(err error) bool {
+	_, ok := err.(*LoginPidError)
+
+	return ok
+}
+
 func newResponse(result interface{}, err error, id int) *Response {
 	var resp Response
 	if err != nil {
@@ -47,8 +65,7 @@ func getLoginUid(pid int32) (uint32, error) {
 	// is the case for daemons and boot processes. Since we're using
 	// unsigned numbers we take the bitwise complement of 0.
 	if u == ^uint32(0) {
-		fmt.Printf("Login User Id is not set for PID %d\n", pid)
-		return 0, nil
+		return 0, newLoginPidError(pid)
 	}
 
 	return u, nil
@@ -112,7 +129,9 @@ func (conn *SrvConn) Handle() {
 
 	cred, err := conn.getCreds()
 	if err != nil {
-		fmt.Fprintln(os.Stderr, err)
+		if !IsLoginPidError(err) {
+			fmt.Fprintln(os.Stderr, err)
+		}
 	} else {
 		groups, err := group.LookupUid(strconv.Itoa(int(cred.Uid)))
 		if err != nil {
