@@ -153,7 +153,7 @@ func main() {
 	client, err := ifmgrd.Dial("unix", "/run/ifmgrd/main.sock")
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
-		os.Exit(1)
+		os.Exit(0)
 	}
 
 	err = action.run(client, args...)
