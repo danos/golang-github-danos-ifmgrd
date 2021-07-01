@@ -1,3 +1,19 @@
+golang-github-danos-ifmgrd (1:1.7) unstable; urgency=medium
+
+  [ Nicholas Brown ]
+  * dh-systemd is part of debhelper
+
+  [ William Ivory ]
+  * Fix bullseye build
+
+  [ Paul Carson ]
+  * Inhibit Login pid not found error (Fixes: VRVDR-50782)
+
+  [ Daniel Gollub ]
+  * ifmgrctl: use return-code 0 in case ifmgrd not reachable
+
+ -- Paul Carson <paul.carson@intl.att.com>  Thu, 01 Jul 2021 13:56:20 +0100
+
 golang-github-danos-ifmgrd (1:1.6) unstable; urgency=medium
 
   * Add MustDebugThreshold() to meet changed interface
