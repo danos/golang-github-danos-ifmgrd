@@ -1,6 +1,6 @@
 [Unit]
 Description=Interface Management daemon
-Requires=configd.service
+BindsTo=configd.service
 
 [Service]
 Restart=always
